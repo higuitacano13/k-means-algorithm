@@ -23,7 +23,7 @@ def k_means_algorithm(data):
 def create_chart(data, kmeans, labels):
     try:
         # ---- Graficar los puntos en el conjunto de datos ---- #
-        plt.scatter(data['X1'], data['X2'], c=labels, cmap='viridis', edgecolors='k')
+        plt.scatter(data['X'], data['Y'], c=labels, cmap='viridis', edgecolors='k')
 
         # ---- Graficar los centroides con una 'x' en rojo ---- #
         plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], marker='x', s=200, linewidths=3, color='r')
@@ -64,6 +64,4 @@ def convert_json(kmeans, data):
 
     # Convertir el diccionario a formato JSON
     resultado_json = json.dumps(resultado_dict, indent=2)
-
-    # Imprimir o utilizar el JSON según tus necesidades
-    print(resultado_json)
+    return resultado_json
