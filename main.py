@@ -4,7 +4,7 @@ import pandas as pd
 def select_file():
     try:
 
-        print('Selecciona el archivo CSV con el que desea realizar la operación:\n1- Coordenadas de Espacio Bidimensional. \n2- Clasificación Genética \n3- Segmentación Clientes \n4- Histórico de la Población Mundial')
+        print('Selecciona el archivo CSV con el que desea realizar la operación:\n1- Coordenadas de Espacio Bidimensional. \n2- Clasificación Genética \n3- Segmentación Clientes \n4- Histórico de la Población Mundial \n5- Vendedores')
         option_selected = int(input('Selección -> '))
         csv_path = ''
 
@@ -19,6 +19,10 @@ def select_file():
             return csv_path, option_selected
         elif option_selected == 4:
             csv_path = './csv_files/world_population_delimiter.csv'
+            return csv_path, option_selected
+        elif option_selected == 5:
+            csv_path = './csv_files/ventas.csv'
+            return csv_path, option_selected
         else:
             raise Exception('La opción seleccionada no es válida, por favor intente de nuevo!')
         
@@ -53,7 +57,7 @@ if __name__ == '__main__':
     try:
         print('*****' * 20)
         print('Bienvenido al ejercicio de agrupamiento utilizando el algoritmo K-Means')
-        path, option_selected = select_file()        
+        path, option_selected = select_file()  
         data = pd.read_csv(path)
         data, kmeans, labels = utils.k_means_algorithm(data)
         action_result(option_selected)

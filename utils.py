@@ -27,7 +27,7 @@ def k_means_algorithm(data):
         print("\nDatos con etiquetas de cluster:")
         print(data_sorted)
         
-        return data_sorted, kmeans, labels
+        return data, kmeans, labels
     except Exception as error:
         print(f'Se ha generado un error realizando el algoritmo k-meant -> {error}')
 
