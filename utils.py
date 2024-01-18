@@ -1,22 +1,33 @@
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 import plotly.express as px
+import pandas as pd
 import json
 
 def k_means_algorithm(data):
     try:
+        # ---- Ajustar el módelo de datos y asignar las etiquetas ---- #
         k = 3
         kmeans = KMeans(n_clusters=k, n_init=10)
         kmeans.fit(data)
         labels = kmeans.labels_
         data['Cluster'] = labels
+        centroids = kmeans.cluster_centers_
 
-        print(f"Centroides (Tipo de dato => {type(kmeans.cluster_centers_)})")
-        print(kmeans.cluster_centers_)
+        # ---- Obtener los centroides y asignar nombres a las columnas ---- #
+        decimales = 0
+        centroids_df = pd.DataFrame(centroids, columns = data.columns[:-1])
+        centroids_df['Cluster'] = range(k)
+        centroids_df = centroids_df.round(decimales)
+
+        data_sorted = data.sort_values(by = "Cluster")
+
+        print(f"\nCentroides (Tipo de dato => {type(centroids_df)})")
+        print(centroids_df)
         print("\nDatos con etiquetas de cluster:")
-        print(data)
+        print(data_sorted)
         
-        return data, kmeans, labels
+        return data_sorted, kmeans, labels
     except Exception as error:
         print(f'Se ha generado un error realizando el algoritmo k-meant -> {error}')
 
