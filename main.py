@@ -4,7 +4,7 @@ import pandas as pd
 def select_file():
     try:
 
-        print('Selecciona el archivo CSV con el que desea realizar la operación:\n1- Coordenadas de Espacio Bidimensional. \n2- Clasificación Genética \n3- Segmentación Clientes')
+        print('Selecciona el archivo CSV con el que desea realizar la operación:\n1- Coordenadas de Espacio Bidimensional. \n2- Clasificación Genética \n3- Segmentación Clientes \n4- Histórico de la Población Mundial')
         option_selected = int(input('Selección -> '))
         csv_path = ''
 
@@ -17,6 +17,8 @@ def select_file():
         elif option_selected == 3:
             csv_path = './csv_files/segmentacion_clientes.csv'
             return csv_path, option_selected
+        elif option_selected == 4:
+            csv_path = './csv_files/world_population_delimiter.csv'
         else:
             raise Exception('La opción seleccionada no es válida, por favor intente de nuevo!')
         
