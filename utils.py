@@ -14,7 +14,7 @@ def k_means_algorithm(data):
         data['Cluster'] = labels
         centroids = kmeans.cluster_centers_
 
-        # ---- Obtener los centroides y asignar nombres a las columnas ---- #
+        # ---- Obtener los centroides y asignar nombres a las columnas (CONCEPTUAL) ---- #
         decimales = 0
         centroids_df = pd.DataFrame(centroids, columns = data.columns[:-1])
         centroids_df['Cluster'] = range(k)
